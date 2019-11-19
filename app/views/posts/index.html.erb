@@ -1,2 +1,30 @@
-<header>woooo!</header>
-<h1>Hello</h1>
+<div class="d-flex align-items-center"><!--縦方向の位置の指定。中央寄せ-->
+	<h1>投稿一覧</h1>
+    <div class="ml-auto posts_button"><!--左側のマージンをautoにした投稿ボタン。クラス名posts_button-->
+        <a class="btn btn-outline-info" href="/posts/new" role="button">投稿</a><!--Infoボタンのタイプ（青文字の青枠）にして、移動先は/posts/new、ボタン名を「投稿」に-->
+    </div>
+</div>
+<!--テーブルを使用。table-bordered：テーブルとセルの全ての横にラインを表示、border-primary：青色の罫線、table-hover：マウスオーバーすると背景色が変わる、table-sm：行間が狭いテーブル。クラス名posts_table--->
+<table class="table table-bordered border-primary table-hover table-sm posts_table">
+  <thead class="thead-dark"><!--表見出しのオプション。暗めの灰色-->
+    <tr>
+		<!--thは見出しセル。scopeは見出しセルの対象を指定する。colは同じ列の見出しセル-->
+		<th scope="col" style="width: 40px">No.</th>
+		<th scope="col" style="width: 700px">投稿タイトル</th>
+		<th scope="col">投稿者</th>
+		<th scope="col">投稿日</th>
+		<th scope="col">更新日時</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+        <tr>
+            <th><%= post.id %></th>
+            <td><%= post.title %></td>
+            <td><%= post.name %></td>
+            <td><%= post.created_at %></td>
+            <td><%= post.updated_at %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

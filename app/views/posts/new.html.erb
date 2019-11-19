@@ -1,0 +1,33 @@
+<div class="d-flex align-items-center"><!--縦方向の位置の指定。中央寄せ-->
+  <h1>投稿</h1>
+  <div class="ml-auto posts_button"><!--左側のマージンをautoにした投稿ボタン。クラスposts_button-->
+      <a class="btn btn-outline-info" href="/posts">投稿一覧</a><!--Infoボタンのタイプ（青文字の青枠）にして、移動先は/posts、ボタン名を「投稿一覧」に-->
+  </div>
+</div>
+<%= form_for @post do |f| %><!--form_for:任意のmodelに基づいたformを作るときに使う。簡単に入力フォームを作成できる-->
+    <div class="form-group">
+        <%= f.label :name, '投稿者名' %><!--f.label：タイトル、f.text_field：入力部分-->
+        <%= f.text_field :name, class: 'form-control' %>
+        <small id="poster-tip" class="form-text text-muted"><!--small:テキストを一回り小さくするためのタグ、text-muted：下の注意書き-->
+            あなたの名前を入力してください。
+        </small>
+    </div>
+    <div class="form-group">
+        <%= f.label :title, '投稿タイトル' %>
+        <%= f.text_field :title, class: 'form-control' %>
+        <small id="title-tip" class="form-text text-muted">
+            タイトルを入力してください。
+        </small>
+    </div>
+    <div class="form-group">
+        <%= f.label :content, '投稿内容' %>
+        <%= f.text_area :content, class: 'form-control', rows:10 %>
+        <small id="content-tip" class="form-text text-muted">
+            投稿内容を入力してください。 
+        </small>
+    </div>
+    <%= f.submit '投稿', class: 'btn btn-info btn-block' %><!--btn-block:親要素の全幅にまたがるブロックレベルのボタン-->
+    <small id="submit-tip" class="form-text text-muted">
+        投稿する前に投稿内容を見直してください!
+    </small>
+<% end %>
