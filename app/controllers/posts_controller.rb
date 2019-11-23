@@ -2,6 +2,8 @@
 class PostsController < ApplicationController
 	#posts/index
 	def index
+        #全ての投稿データを取得。
+        @posts = Post.all
 	end
 
 	#posts/new
@@ -18,7 +20,7 @@ class PostsController < ApplicationController
 
     private
 
-    # paramsから欲しいデータのみ抽出
+    # paramsから欲しいデータのみ抽出。postでリクエストし、name、title、contentを取得
     def post_params
         params.require(:post).permit(:name, :title, :content)
     end
